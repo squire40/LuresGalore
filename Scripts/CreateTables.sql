@@ -12,8 +12,8 @@ CREATE TABLE Product
 (
 ProductId INT IDENTITY(1,1) PRIMARY KEY,
  Name VARCHAR(100),
-[Description] VARCHAR(255),
-PriceId INT NOT NULL,
+[Description] VARCHAR(MAX),
+PriceId INT, 
 CreatedDate DATETIME NOT NULL,
 UpdatedDate DATETIME NOT NULL
 )
@@ -23,7 +23,7 @@ IF OBJECT_ID('dbo."User"', 'U') IS NOT NULL
     DROP TABLE "User"
 CREATE TABLE "User"
 (
-UserID INT NOT NULL PRIMARY KEY, 
+UserID INT IDENTITY(1,1) PRIMARY KEY, 
 Username VARCHAR(100),
 Email VARCHAR(100),
 Password VARCHAR(50),
@@ -39,7 +39,7 @@ IF OBJECT_ID('dbo.ShoppingCart', 'U') IS NOT NULL
 
 CREATE TABLE ShoppingCart
 (
-ShoppingCartID INT NOT NULL PRIMARY KEY,
+ShoppingCartID INT IDENTITY(1,1)  PRIMARY KEY,
 UserId INT,
 Subtotal decimal,
 Tax decimal,
@@ -55,7 +55,7 @@ IF OBJECT_ID('dbo."Order"', 'U') IS NOT NULL
 
 CREATE TABLE "Order"
 (
-OrderID INT NOT NULL PRIMARY KEY,
+OrderID INT IDENTITY(1,1)  PRIMARY KEY,
 UserId INT,
 Subtotal decimal, 
 Tax decimal,
@@ -71,7 +71,7 @@ IF OBJECT_ID('dbo.ProductCategory', 'U') IS NOT NULL
 
 CREATE TABLE ProductCategory
 (
-ProductCategoryId INT NOT NULL PRIMARY KEY,
+ProductCategoryId INT IDENTITY(1,1) PRIMARY KEY,
 ProductId INT,
 CategoryId INT,
 CreatedDate DATETIME NOT NULL,
@@ -85,7 +85,7 @@ IF OBJECT_ID('dbo.Role', 'U') IS NOT NULL
 
 CREATE TABLE Role
 (
-RoleId INT NOT NULL PRIMARY KEY,
+RoleId INT IDENTITY(1,1) PRIMARY KEY,
 Name varchar(100),
 CreatedDate DATETIME NOT NULL,
 UpdatedDate DATETIME NOT NULL
@@ -98,7 +98,7 @@ IF OBJECT_ID('dbo.ShoppingCartLineItem', 'U') IS NOT NULL
 
 CREATE TABLE ShoppingCartLineItem
 (
-ShoppingCartLineItemId INT NOT NULL PRIMARY KEY,
+ShoppingCartLineItemId INT IDENTITY(1,1) PRIMARY KEY,
 ShoppingCartID INT,
 LineItemID INT,
 IsWishList bit,
@@ -112,7 +112,7 @@ IF OBJECT_ID('dbo.OrderLineItem', 'U') IS NOT NULL
 
 CREATE TABLE OrderLineItem
 (
-OrderLineItemID INT NOT NULL PRIMARY KEY,
+OrderLineItemID INT IDENTITY(1,1) PRIMARY KEY,
 OrderId INT,
 LineItemID INT,
 CreatedDate DATETIME NOT NULL,
@@ -126,7 +126,7 @@ IF OBJECT_ID('dbo.Category', 'U') IS NOT NULL
 
 CREATE TABLE Category
 (
-CategoryId INT NOT NULL PRIMARY KEY,
+CategoryId INT IDENTITY(1,1) PRIMARY KEY,
 Name VARCHAR(100),
 CreatedDate DATETIME NOT NULL,
 UpdatedDate DATETIME NOT NULL
@@ -139,10 +139,10 @@ IF OBJECT_ID('dbo.LineItem', 'U') IS NOT NULL
 
 CREATE TABLE LineItem
 (
-LineItemId INT NOT NULL PRIMARY KEY,
+LineItemId INT IDENTITY(1,1) PRIMARY KEY,
 ProductID INT,
 ProductName VARCHAR(100),
-ProductDescription VARCHAR(255),
+ProductDescription VARCHAR(MAX),
 Price decimal,
 CreatedDate DATETIME NOT NULL,
 UpdatedDate DATETIME NOT NULL
@@ -155,7 +155,7 @@ IF OBJECT_ID('dbo.Price', 'U') IS NOT NULL
 
 CREATE TABLE Price
 (
-PriceId INT NOT NULL PRIMARY KEY,
+PriceId INT IDENTITY(1,1) PRIMARY KEY,
 Amount decimal,
 CreatedDate DATETIME NOT NULL,
 UpdatedDate DATETIME NOT NULL
