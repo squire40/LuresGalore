@@ -1,3 +1,5 @@
+USE LuresGalore
+Go
 
 begin tran
 
@@ -42,4 +44,4 @@ VALUES
 (9,3);
 
 
-rollback tran
+COMMIT tran
