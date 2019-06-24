@@ -144,6 +144,8 @@ ProductID INT,
 ProductName VARCHAR(100),
 ProductDescription VARCHAR(MAX),
 Price decimal,
+Quantity INT,
+Subtotal decimal,
 CreatedDate DATETIME NOT NULL DEFAULT(GETDATE()),
 UpdatedDate DATETIME NOT NULL DEFAULT(GETDATE())
 
